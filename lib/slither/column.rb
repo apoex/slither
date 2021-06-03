@@ -97,7 +97,9 @@ class Slither
           when :money
             "%.2f" % value.to_f
           when :money_with_implied_decimal
-            "%d" % (value.to_f * 100)
+            value100 = value.to_f * 100
+
+            @options[:format] ? @options[:format] % value100 : "%d" % value100
           else
             value.to_s
         end
